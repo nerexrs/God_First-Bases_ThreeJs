@@ -1,27 +1,83 @@
+
 import camera from "./Camera.js";
 import cube from "./Cube.js";
+import light from "./Light.js";
 import renderer from "./Renderer.js";
 import scene from "./Scene.js";
+// recuerda escribir lo que quieres importar y que 
+// se autocomplete para que se autoimporte. Ejemplo
+// abajo con el cube escribe cube, autocompleta y se
+// auto importa
 
 scene.add(cube)
+
+
 //agrego el cubo a la escena
-camera.position.z = 5
-camera.position.x = 1
-camera.position.y = 1
-// esto se determina en metros
+
+// camera.position.x = 1
+// // muevo un metro en el eje horizontal a la derecha, positivo derecha, negativo izquierda
+// camera.position.y = 1
+// // muevo un metro en el eje vertical arriba, positivo arriba, negativo abajo
+// camera.position.z = 5
 
 // numeros positivos camara más cerca,
 // numeros negativos más lejos. 
 // z es profundidad
+
+
+// esto se determina en metros
+
+camera.position.set(1, 2, 5) 
+/*
+como estoy viendo al cubo especificamente entonces todo movimiento
+termina viendose como si girara el cubo o mi objeto gracias al look at
+y al set
+*/
+//Aquí establezco la posición de un objeto en x,y,z
+
+
 camera.lookAt(cube.position)
-//enfoco mi cubo en su posición
-renderer.render(scene, camera)
+scene.add( light );
+//enfoco mi camara en la posición de mi cubo
 
 
-renderer.render(scene, camera)
+// si pongo algo después del render que quiero renderizar
+// es como tomar una foto pero prendiendo la luz después de la foto
+
+
+
 // renderizo la escena, el cubo u objeto y la camara
 
 
+//si pones setInterval, te va a importar automatico el modulo
+// pero entonces si pasa eso no funciona. Borra el modulo que se importa de timers
+setInterval(() => {
+    cube.rotation.z += 0.01
+    //el eje z me rota horizontalmente de lado
+    cube.rotation.x += 0.01
+    //el eje x me rota verticalmente así sea ironico xd
+
+    cube.rotation.y += 0.01
+    //el eje y me rota horizontalmente
+
+    // lle digo que rote mi cubo en el eje y y que
+    // por cada fotograma gire 1 centecima
+    renderer.render(scene, camera)
+    //acá voy a renderizar todo después de la rotación
+}, 1000/30);
+
+
+
+
+//establezo un intervalo que hará la animación
+
+/*Para poner un objeto en three js necesito realizar un 
+ bucle, en el tiempo le digo 1000 milisegundos o sea un segundo
+ dividio 30 que sería 30 fotogramas por segundo y ahí modificamos la
+ rotación para que giren los objetos 3d y después le digo ue renderice
+
+ todos los objetos 3d tienen rotación y le digo que
+*/ 
 
 
 
