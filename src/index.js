@@ -8,6 +8,8 @@ import resize from "./Resize.js";
 import scene from "./Scene.js";
 import { snowman } from "./Snowman.js";
 import "./OrbitImplementation.js"
+import "./StatsImplementation.js"
+import guiImplementation from "./GuiImplementation.js";
 
 // recuerda escribir lo que quieres importar y que 
 // se autocomplete para que se autoimporte. Ejemplo
@@ -15,6 +17,7 @@ import "./OrbitImplementation.js"
 // auto importa
 
 scene.add(cube)
+
 
 
 
@@ -64,12 +67,12 @@ resize.start(renderer)
 //agrego mi loopmachine agregando un ballback    
 loopMachine.addCallback(() => {
 
-    cube.rotation.z += 0.01
-    //el eje z me rota horizontalmente de lado
-    cube.rotation.x += 0.02
-    //el eje x me rota verticalmente así sea ironico xd
+    // cube.rotation.z += 0.01
+    // //el eje z me rota horizontalmente de lado
+    // cube.rotation.x += 0.02
+    // //el eje x me rota verticalmente así sea ironico xd
 
-    cube.rotation.y += 0.01
+    // cube.rotation.y += 0.01
     //el eje y me rota horizontalmente
 
     // lle digo que rote mi cubo en el eje y y que
@@ -82,7 +85,7 @@ loopMachine.addCallback(() => {
 
 loopMachine.start() //inicio mi animación
 
-//agrego mi keyListener
+//agrego mi keyListener para escuchar las teclas por su número de key
 keyListener.start()
 
 //establezo un intervalo que hará la animación
@@ -95,10 +98,24 @@ keyListener.start()
  todos los objetos 3d tienen rotación y le digo que
 */ 
 
+guiImplementation.start() //implemento mi apartado de GUI para manipular
+//mi objeto
+
 setTimeout(() => {
     console.log(keyListener.isPressed(13)); 
 }, 3000);
 
+
+// después podría realizar un botón o algo por el estilo que me sirva para mostrar o apagar esto
+
+// setTimeout(() => {
+//     guiImplementation.stop()
+// }, 3000);
+
+
+// setTimeout(() => {
+//     guiImplementation.start()
+// }, 5000);
 /*
 Para añadir un objeto. En three js, Tenemos que primero llamar a la escena. Agregar después el objeto que queremos añadir a la escena.
 
