@@ -1,3 +1,4 @@
+import * as THREE from "./modules/three.module.js"  
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 // en los tres parametros determino lo largo que serán las lineas de los triangulos
 const material = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );

@@ -1,5 +1,6 @@
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
+import * as THREE from "./modules/three.module.js"
+    
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 /*
 El primer parámetro va a indicar. El point of view. Que viene siendo el campo de visión de cuán estrecho.
 ¿O ancho? Es el ángulo de captura de la Cámara. Sii es muy grande, es como un gran ojo de pez que va a abarcar.

@@ -1,4 +1,6 @@
+import * as THREE from "./modules/three.module.js" 
 const renderer = new THREE.WebGLRenderer({antialias: true});
+//si cambio el antialias a false veré mi objeto 3d pixeleado, en cambio acá lo veré smoot
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 

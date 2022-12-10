@@ -1,3 +1,4 @@
+import * as THREE from "./modules/three.module.js" 
 const scene = new THREE.Scene();
 
 export default scene

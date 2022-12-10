@@ -1,3 +1,4 @@
+import * as THREE from "./modules/three.module.js"
 const light = new THREE.AmbientLight( 0x404040 ); // soft white light
 
 // White directional light at half intensity shining from the top.
@@ -5,7 +6,7 @@ const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
 light.add( directionalLight );
 //como ya puse el light en la scene agrego esto a la light directo
 
-directionalLight.position.set(1, 2, 2)
+directionalLight.position.set(1, 2, 1)
 
 //Aquí marcamos la direccion de la ley pasandole
 // el parametro set que establece la posición x,y, z

@@ -1,15 +1,21 @@
-
 import camera from "./Camera.js";
 import cube from "./Cube.js";
+import keyListener from "./KeyListener.js";
 import light from "./Light.js";
+import loopMachine from "./LoopMachine.js";
 import renderer from "./Renderer.js";
+import resize from "./Resize.js";
 import scene from "./Scene.js";
+import { snowman } from "./Snowman.js";
+import "./OrbitImplementation.js"
+
 // recuerda escribir lo que quieres importar y que 
 // se autocomplete para que se autoimporte. Ejemplo
 // abajo con el cube escribe cube, autocompleta y se
 // auto importa
 
 scene.add(cube)
+
 
 
 //agrego el cubo a la escena
@@ -27,7 +33,7 @@ scene.add(cube)
 
 // esto se determina en metros
 
-camera.position.set(1, 2, 5) 
+camera.position.set(1, 1, 3) 
 /*
 como estoy viendo al cubo especificamente entonces todo movimiento
 termina viendose como si girara el cubo o mi objeto gracias al look at
@@ -46,15 +52,21 @@ scene.add( light );
 
 
 
-// renderizo la escena, el cubo u objeto y la camara
-
+// acá una vez que se establezca la escena, el objeto, la camara y la luz
+// entonces voy a aplicar un resize o que re establezca el tamaño del renderizado
+// en función del tamaño actual de la ventana
+resize.start(renderer)
 
 //si pones setInterval, te va a importar automatico el modulo
 // pero entonces si pasa eso no funciona. Borra el modulo que se importa de timers
-setInterval(() => {
+    //acá estaba setInterval 
+
+//agrego mi loopmachine agregando un ballback    
+loopMachine.addCallback(() => {
+
     cube.rotation.z += 0.01
     //el eje z me rota horizontalmente de lado
-    cube.rotation.x += 0.01
+    cube.rotation.x += 0.02
     //el eje x me rota verticalmente así sea ironico xd
 
     cube.rotation.y += 0.01
@@ -68,6 +80,10 @@ setInterval(() => {
 
 
 
+loopMachine.start() //inicio mi animación
+
+//agrego mi keyListener
+keyListener.start()
 
 //establezo un intervalo que hará la animación
 
@@ -79,7 +95,9 @@ setInterval(() => {
  todos los objetos 3d tienen rotación y le digo que
 */ 
 
-
+setTimeout(() => {
+    console.log(keyListener.isPressed(13)); 
+}, 3000);
 
 /*
 Para añadir un objeto. En three js, Tenemos que primero llamar a la escena. Agregar después el objeto que queremos añadir a la escena.
