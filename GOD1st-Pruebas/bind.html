@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind</title>
+</head>
+<body>
+    <script>
+        //si yo tengo objetos con el mismo nombre y mismo valor me dirá que ya existe mi objeto
+        // si tienen mismo valor entonces poner diferente nombre de variable en caso de querer
+        // que sean objetos distintos con mismo valor o cambiar los valores para que el mismo objeto cambie
+
+        //o también realizar objetos únicos
+        let person1 = {
+            name: "Juan",
+            getName() {
+                console.log(this);
+            }
+        }
+        let person2 = {
+            name: "Lucas",
+            age: 13
+        }
+        let person3 = {
+            name: "Mateo"
+        }
+        
+        
+
+        person1.getName.bind(person2.age)()
+        //acá le digo, de mi person1 accede al metodo getname y de ahí bindeame o uneme esa función 
+        //con mi objeto de person3. Es decir que el contexto de ejecución que tienes en el clg con el parametros this
+        // va a ser el name de person3 porque yo accedo a todas las propiedades del objetos a menos que
+        //indique lo contrario
+
+        //efectivo, funcionó. Yo puedo bindear especificamente una propiedad de mi objeto
+
+        //QUE VAINA TAN PODEROSA GRACIAS DIOS!!
+
+    </script>
+</body>
+</html>

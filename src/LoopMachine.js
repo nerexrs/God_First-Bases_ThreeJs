@@ -35,6 +35,19 @@ class LoopMachine {
         //seguirá refirienose a la instancia porque está ejecutandose
         // en un callback de request. Porque la seguna vez le asignamos
         //con el bind que el contexto de ejecución es la misma instancia
+
+/*
+
+Cuando hacemos un callback se pierde el contexto. Por eso es que le asignamos el valor this que es la instancia misma.
+
+El requestAnimationFrame tiene un contexto que es window. El problema es que yo no se lo psue y quite el .bind(this). 
+Si se lo quito me dice que es undifined, la primera vez no es así porque la misma instancia ejecuta el método run y la misma instancia tiene la propiedad flag
+
+Pero la segunda vez que se ejecuta y siguientes veces ya no se llama desde la instancia sino que se llama desde algún lugar el método run del reqAnimate. 
+El primer this me dice que la instancia o el contexto es el LoopMachine o sea la instancia pero después no sale nada porque es un callbacak y ´pierde la instancia.
+Pero cuando yo le digo al reqAnimate “oye, de esta instancia llamame al método run” y el me dice. Pero cuál instancia? Entonces yo le digo, “uneme o bindeame o hazme 
+un bind del método run que se encuentra en esta instancia que no sabes qué es porque lo hago en un callback y ese método run únemelo con la instancia
+*/
     }
     start() {
         // in this function I need to change my flag 

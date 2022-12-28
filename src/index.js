@@ -10,13 +10,14 @@ import { snowman } from "./Snowman.js";
 import "./OrbitImplementation.js"
 import "./StatsImplementation.js"
 import guiImplementation from "./GuiImplementation.js";
+import plane from "./Plane.js";
 
 // recuerda escribir lo que quieres importar y que 
 // se autocomplete para que se autoimporte. Ejemplo
 // abajo con el cube escribe cube, autocompleta y se
 // auto importa
 
-scene.add(cube)
+
 
 
 
@@ -47,6 +48,8 @@ y al set
 
 camera.lookAt(cube.position)
 scene.add( light );
+scene.add( plane );
+
 //enfoco mi camara en la posición de mi cubo
 
 
@@ -101,9 +104,12 @@ keyListener.start()
 guiImplementation.start() //implemento mi apartado de GUI para manipular
 //mi objeto
 
+
 setTimeout(() => {
     console.log(keyListener.isPressed(13)); 
 }, 3000);
+
+scene.add(cube)
 
 
 // después podría realizar un botón o algo por el estilo que me sirva para mostrar o apagar esto

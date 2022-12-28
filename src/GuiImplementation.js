@@ -1,5 +1,6 @@
 import cube from "./Cube.js"
 import { GUI } from "./modules/GUI.js"
+//Gui es el panel para manipular mis cosas en el frontend y no en el codigo
 
 class GuiImplementation { //usar una clase para activar o desactivar
     constructor() {
@@ -37,11 +38,12 @@ class GuiImplementation { //usar una clase para activar o desactivar
         //en mi gui
 
         this.gui.addColor(colorObj, 'colorParam').name('COLOR').onChange(()=>{
-            console.log(cube);//yo puedo debugear pasando el objeto que quiero modificar en un clg 
-            // cube.material.color.set(colorOBbj.colorParam)
+            //console.log(cube);yo puedo debugear pasando el objeto que quiero modificar en un clg 
+            cube.material.color.set(colorOBbj.colorParam)
         })
         const rotation = this.gui.addFolder("Rotation")
         
+
         rotation.add(cube.rotation, 'y', 0, Math.PI * 2).step(Math.PI / 180)
         rotation.add(cube.rotation, 'x', 0, Math.PI * 2).step(Math.PI / 180)
         rotation.add(cube.rotation, 'z', 0, Math.PI * 2).step(Math.PI / 180)
